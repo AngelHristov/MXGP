@@ -7,10 +7,9 @@
     public abstract class Motorcycle : IMotorcycle
     {
         private string model;
-        private int horsePower;
         private double cubicCentimeters;
 
-        public Motorcycle(string model, int horsePower, double cubicCentimeters)
+        protected Motorcycle(string model, int horsePower, double cubicCentimeters)
         {
             Model = model;
             HorsePower = horsePower;
@@ -30,11 +29,7 @@
             }
         }
 
-        public int HorsePower
-        {
-            get => horsePower;
-            private set => horsePower = value;
-        }
+        public abstract int HorsePower { get; protected set; }
 
         public double CubicCentimeters
         {
