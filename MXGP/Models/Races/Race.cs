@@ -5,6 +5,7 @@
 
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Race : IRace
     {
@@ -16,6 +17,8 @@
         {
             Name = name;
             Laps = laps;
+
+            riders = new List<IRider>();
         }
 
         public IReadOnlyCollection<IRider> Riders => riders.AsReadOnly();
@@ -23,12 +26,13 @@
         public string Name
         {
             get => name;
-            set
+            private set
             {
                 if (string.IsNullOrEmpty(value) || value.Length < 5)
                 {
                     throw new ArgumentException($"Name {value} cannot be less than 5 symbols.");
                 }
+
                 name = value;
             }
         }
@@ -36,12 +40,13 @@
         public int Laps
         {
             get => laps;
-            set
+            private set
             {
                 if (value < 1)
                 {
                     throw new ArgumentException($"Laps cannot be less than 1.");
                 }
+
                 laps = value;
             }
         }
@@ -56,9 +61,9 @@
             {
                 throw new ArgumentException($"Rider {rider.Name} could not participate in race.");
             }
-            if (riders.Contains(rider))
+            if (riders.Any(x => x.Name == rider.Name)) 
             {
-                throw new ArgumentNullException($"Rider {rider.Name} is already added in {Name} race.")
+                throw new ArgumentNullException($"Rider {rider.Name} is already added in {Name} race.");
             }
 
             riders.Add(rider);

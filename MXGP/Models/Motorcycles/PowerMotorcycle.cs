@@ -23,6 +23,7 @@
                 {
                     throw new ArgumentException($"Invalid horse power: {value}.");
                 }
+
                 horsePower = value;
             }
         }

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MXGP.Models.Motorcycles
+﻿namespace MXGP.Models.Motorcycles
 {
-    class SpeedMotorcycle : Motorcycle
+    using System;
+
+    public class SpeedMotorcycle : Motorcycle
     {
         private const double Cubic_Centimeters = 125;
 
         private int horsePower;
 
         public SpeedMotorcycle(string model, int horsePower)
-            : base(model, horsePower, Cubic_Centimeters)
+            :base(model, horsePower, Cubic_Centimeters)
         {
             HorsePower = horsePower;
         }
@@ -25,6 +23,7 @@ namespace MXGP.Models.Motorcycles
                 {
                     throw new ArgumentException($"Invalid horse power: {value}.");
                 }
+
                 horsePower = value;
             }
         }

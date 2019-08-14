@@ -25,6 +25,7 @@
                 {
                     throw new ArgumentException($"Model {value} cannot be less than 4 symbols.");
                 }
+
                 model = value;
             }
         }
@@ -34,7 +35,7 @@
         public double CubicCentimeters
         {
             get => cubicCentimeters;
-            set => cubicCentimeters = value;
+            private set => cubicCentimeters = value;
         }
 
         public double CalculateRacePoints(int laps)
